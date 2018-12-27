@@ -7,7 +7,7 @@ import (
 )
 
 var HEADER_FAILD_SESSION = "X-Session-Id"
-var HEADER_FAILD_UNAME   = "X-User-Name"
+var HEADER_FAILD_UNAME = "X-User-Name"
 
 func validateUserSession(r *http.Request) bool {
 	sid := r.Header.Get(HEADER_FAILD_SESSION)
