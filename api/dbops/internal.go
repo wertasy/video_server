@@ -1,7 +1,7 @@
 package dbops
 
 import (
-	"video_server/api/defs"
+	"github.com/video_server/api/defs"
 	"strconv"
 	"log"
 	"sync"

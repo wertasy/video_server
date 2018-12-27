@@ -13,34 +13,14 @@ jQuery(document).ready(function () {
         $(this).removeClass('input-error');
     });
 
-    $('.btn-submit').click(function (e) {
-        var ok = true;
-        $(".login-form").find('input[type="text"], input[type="password"], textarea').each(function () {
+    $('.login-form').submit(function (e) {
+        $(this).find('input[type="text"], input[type="password"], textarea').each(function () {
             if ($(this).val() == "") {
-                ok = false;
                 $(this).addClass('input-error');
-            }
-            else {
+            } else {
                 $(this).removeClass('input-error');
             }
-        });
-        if (ok) {
-            e.preventDefault();
-        } else {
-            var json = JSON.stringify($(".login-form").serializeObject());
-            alert(json);
-            /*
-                $.ajax({
-                    url: "",
-                    type: "POST",
-                    data: jsonuserinfo,
-                    contentType: "application/json",  //缺失会出现URL编码，无法转成json对象
-                    success: function () {
-                        alert("send");
-                    }
-                });
-            */
-        }
+        })
     });
 
 });

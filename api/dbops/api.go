@@ -5,8 +5,8 @@ import (
 	"time"
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
-	"video_server/api/defs"
-	"video_server/api/utils"
+	"github.com/video_server/api/defs"
+	"github.com/video_server/api/utils"
 )
 
 // user

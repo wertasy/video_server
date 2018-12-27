@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+/* httprouter 中间件 */
 type midWareHandler struct {
 	r *httprouter.Router
 }
@@ -14,9 +15,11 @@ func NewMidWareHandler(r *httprouter.Router) http.Handler {
 	m.r = r
 	return m
 }
+/* 将 httprouter 的 ServeHTTP 进行封装，每次请求都要进行用户 Session 验证 */
 func (m midWareHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	// 先验证会话
 	validateUserSession(r)
-
+	// 再提供服务
 	m.r.ServeHTTP(w, r)
 }
 

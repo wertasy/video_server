@@ -3,9 +3,9 @@ package session
 import (
 	"time"
 	"sync"
-	"video_server/api/defs"
-	"video_server/api/dbops"
-	"video_server/api/utils"
+	"github.com/video_server/api/defs"
+	"github.com/video_server/api/dbops"
+	"github.com/video_server/api/utils"
 )
 
 
@@ -36,7 +36,7 @@ func LoadSessionsFromDB() {
 		return true
 	})
 }
-
+/* 生成一个新的 Session ID，Session ID 是一个 string 类型的 UUID */
 func GenerateNewSessionId(uname string) string {
 	id, _ := utils.NewUUID()
 	ctime := nowInMili()
@@ -47,7 +47,11 @@ func GenerateNewSessionId(uname string) string {
 
 	return id
 }
-
+/*
+  通过 session id 判断一个 session 是否已经过期。
+  如果没有过期将返回对应的用户名和 true，
+  否则返回空字符串和 false
+*/
 func IsSessionExpired(sid string) (string, bool) {
 	ss, ok := sessionMap.Load(sid)
 	if ok {
